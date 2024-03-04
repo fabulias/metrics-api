@@ -39,8 +39,6 @@ func (s *MetricsService) SendMetrics(deviceID uint, rm *metricsapi.RawMetrics) e
 	// Calculate new metrics
 	newAvg, newMax, newMin := calculateMetrics(rm, cm)
 
-	// If there aren't preexistent metrics, create new ones.
-	// if cm == nil {
 	cm = &metricsapi.CalculatedMetrics{
 		DeviceID:  deviceID,
 		Timestamp: rm.Timestamp,
@@ -54,18 +52,6 @@ func (s *MetricsService) SendMetrics(deviceID uint, rm *metricsapi.RawMetrics) e
 		DiskMax:   newMax.Disk,
 		DiskMin:   newMin.Disk,
 	}
-	// } else {
-	// 	// Update current metrics
-	// 	cm.CPUAvg = newAvg.CPU
-	// 	cm.CPUMax = newMax.CPU
-	// 	cm.CPUMin = newMin.CPU
-	// 	cm.MemoryAvg = newAvg.Memory
-	// 	cm.MemoryMax = newMax.Memory
-	// 	cm.MemoryMin = newMin.Memory
-	// 	cm.DiskAvg = newAvg.Disk
-	// 	cm.DiskMax = newMax.Disk
-	// 	cm.DiskMin = newMin.Disk
-	// }
 
 	// Init transaction
 	tx := s.repository.Begin()

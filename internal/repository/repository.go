@@ -33,21 +33,6 @@ func (r *MetricsRepository) RegisterDevice(deviceName string) (*metricsapi.Devic
 	return &device, nil
 }
 
-// func (r *MetricsRepository) SendMetrics(id uint, metrics metricsapi.Metrics) (*metricsapi.Metrics, error) {
-// 	metricsResp := metricsapi.Metrics{
-// 		DeviceId:    id,
-// 		CPUUsage:    metrics.CPUUsage,
-// 		MemoryUsage: metrics.MemoryUsage,
-// 		DiskUsage:   metrics.DiskUsage,
-// 		Timestamp:   metrics.Timestamp,
-// 	}
-
-// 	if result := r.db.Create(metricsResp); result.Error != nil {
-// 		return nil, result.Error
-// 	}
-// 	return &metricsResp, nil
-// }
-
 func (r *MetricsRepository) GetLatestMetrics(id uint) (*metricsapi.CalculatedMetrics, error) {
 	var metric metricsapi.CalculatedMetrics
 
