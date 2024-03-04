@@ -1,0 +1,79 @@
+{
+	"info": {
+		"_postman_id": "ff3ecd11-8353-4e42-aaee-07aa9ce0c85a",
+		"name": "Metrics API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3035299"
+	},
+	"item": [
+		{
+			"name": "Register device",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"myLaptop\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9000/devices/register",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"devices",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Latest metrics",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9000/devices/1/metrics",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"devices",
+						"1",
+						"metrics"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get metrics history by device",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9000/devices/1/metrics/history",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"devices",
+						"1",
+						"metrics",
+						"history"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
