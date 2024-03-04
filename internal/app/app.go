@@ -20,16 +20,16 @@ func NewApplication(cfg config.Config) *Application {
 	repository := repository.New()
 	service := service.New(repository)
 	metricsHandler := handlers.New(service)
-	// Registrar un nuevo dispositivo
+	// Register a new device
 	router.POST("/devices/register", metricsHandler.RegisterDevice)
 
-	// Enviar datos de monitoreo para un dispositivo
+	// Send data of a device related to metrics
 	router.POST("/devices/:id/metrics", metricsHandler.SendMetrics)
 
-	// Consultar las últimas métricas de un dispositivo
+	// Request latest metrics for a device
 	router.GET("/devices/:id/metrics", metricsHandler.GetLatestMetrics)
 
-	// Consultar el historial de métricas de un dispositivo
+	// Request history of metrics for a device
 	router.GET("/devices/:id/metrics/history", metricsHandler.GetMetricsHistory)
 
 	return &Application{
